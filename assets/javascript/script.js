@@ -27,7 +27,7 @@ async function displayFullInfo() {
 
 // Get JSON result of translate.
 async function searchForTranslate() {
-    const translateURL = SecretUrl.getYandexUrl(search.value);
+    const translateURL = API_URL.getYandexUrl(search.value);
     const responseTranslate = await request.send(translateURL);
 
     return responseTranslate;
@@ -35,10 +35,10 @@ async function searchForTranslate() {
 
 // Get JSON result of context.
 async function searchForContext() {
-    const ContextURL = `https://api.datamuse.com/words?ml=${search.value}&qe=ml&max=8&md=d`;
+    const ContextURL = API_URL.getDatamuseUrl(search.value);
     const responseContext = await request.send(ContextURL);
     let i = 0;
-    document.querySelectorAll(".synonym__button").forEach(s => s.textContent = responseContext[i++].word);
+    document.querySelectorAll(".synonym__button").forEach(s => s.textContent = responseContext[i++].Word);
 
     return responseContext;
 }

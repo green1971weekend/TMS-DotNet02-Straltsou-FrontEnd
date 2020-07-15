@@ -12,7 +12,7 @@ let counter = 0;
 
 // Get JSON result of pictures.
 async function searchForPicture() {
-    const PictureURL = SecretUrl.getUnsplashUrl(search.value);   
+    const PictureURL = API_URL.getUnsplashUrl(search.value);   
     const responsePicture = await request.send(PictureURL);
 
     return responsePicture;
@@ -25,8 +25,7 @@ async function displayFilteredResult() {
     introductionInfo.innerHTML = "";
 
     const responsePicture = await searchForPicture();
-    const filteredImage = responsePicture.results.filter(img => img.height > 4500);
-    console.log(filteredImage);
+    const filteredImage = responsePicture.Results.filter(img => img.height > 4500);
     let i = 0;
     filteredImage.forEach(img => { 
         const element = document.createElement("img");
