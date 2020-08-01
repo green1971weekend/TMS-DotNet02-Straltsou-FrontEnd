@@ -14,7 +14,7 @@ async function displayFullInfo() {
     document.querySelector(".wrap__card").classList.add("display-none")
 
     const responseTranslate = await searchForTranslate();
-    translate.textContent = responseTranslate.text;
+    translate.textContent = responseTranslate.Text;
     await searchForContext();
 
     document.querySelector(".wrap__context").classList.remove("display-none");
@@ -28,7 +28,7 @@ async function displayFullInfo() {
 // Get JSON result of translate.
 async function searchForTranslate() {
     const translateURL = API_URL.getYandexUrl(search.value);
-    const responseTranslate = await request.send(translateURL);
+    const responseTranslate = await request.sendRequestAsyncWithRefresh("GET", translateURL);
 
     return responseTranslate;
 }
@@ -36,19 +36,26 @@ async function searchForTranslate() {
 // Get JSON result of context.
 async function searchForContext() {
     const ContextURL = API_URL.getDatamuseUrl(search.value);
-    const responseContext = await request.send(ContextURL);
+    const responseContext = await request.sendRequestAsyncWithRefresh("GET", ContextURL);
+    
     let i = 0;
     document.querySelectorAll(".synonym__button").forEach(s => s.textContent = responseContext[i++].Word);
 
     return responseContext;
 }
 
+function main() {
+    if(!localStorage.getItem("accessToken")){
+        location.replace("/index.html");
+    }
+
+    search.autocomplete();
+    card.createCard();
+}
 
 
 
-
-document.addEventListener("DOMContentLoaded", search.autocomplete);
-document.addEventListener("DOMContentLoaded", card.createCard);
+document.addEventListener("DOMContentLoaded", main);
 
 export {
     displayFullInfo

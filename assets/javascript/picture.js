@@ -13,7 +13,7 @@ let counter = 0;
 // Get JSON result of pictures.
 async function searchForPicture() {
     const PictureURL = API_URL.getUnsplashUrl(search.value);   
-    const responsePicture = await request.send(PictureURL);
+    const responsePicture = await request.sendRequestAsyncWithRefresh("GET", PictureURL);
 
     return responsePicture;
 }
@@ -29,7 +29,7 @@ async function displayFilteredResult() {
     let i = 0;
     filteredImage.forEach(img => { 
         const element = document.createElement("img");
-        element.src = filteredImage[i++].urls.small;  // BUG WITH PICTURES??
+        element.src = filteredImage[i++].urls.small;
         slider.appendChild(element);
     });
 

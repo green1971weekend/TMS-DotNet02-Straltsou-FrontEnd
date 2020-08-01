@@ -186,6 +186,7 @@ h2 {
     border-radius: 25px;
     border: none;
     cursor: pointer;
+    outline: none;
 }
 
 .wrap__context-flex {
@@ -238,4 +239,6 @@ h2 {
     border-radius: 10px;
     background-color: #dc5959;
     color: white;
+    outline: none;
+    cursor: pointer;
 }

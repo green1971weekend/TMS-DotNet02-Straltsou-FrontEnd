@@ -10,5 +10,9 @@ const API_URL = {
 
     getDatamuseUrl(input) {
         return `https://localhost:5001/api/content/context?input=${input}`;
+    },
+
+    getRememberedCards() {
+        return "https://localhost:5001/api/content/vocabulary";
     }
 }

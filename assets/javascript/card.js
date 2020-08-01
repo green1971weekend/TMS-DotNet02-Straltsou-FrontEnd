@@ -1,7 +1,5 @@
 import * as request from "./request.js";
 
-
-
 let rememberCard;
 const REMEMBER_CARD_URL = "https://localhost:5001/api/content";
 
@@ -14,7 +12,7 @@ function createCard() {
     synonymButtons.forEach(button => button.addEventListener("click", async function(event) {
 
         const ContextURL = API_URL.getDatamuseUrl(button.textContent);
-        const responseContext = await request.send(ContextURL);
+        const responseContext = await request.sendRequestAsyncWithRefresh("GET", ContextURL);
         const definitions = responseContext[0].Defs;
 
         let fixedDefinitions;
@@ -33,9 +31,13 @@ function createCard() {
         document.querySelector(".card__word").textContent = button.textContent;
         document.querySelector(".card__description").textContent = fixedDefinitions;
 
+        const authModel = JSON.parse(localStorage.getItem("accessToken"));
+        const userId = authModel.Id;
+
         rememberCard = {
             word: button.textContent,
-            definition: fixedDefinitions
+            definition: fixedDefinitions,
+            ApplicationUserId: userId
         }
     }));
 }
@@ -47,13 +49,11 @@ backToSynonymsBtn.addEventListener("click", function(event) {
     document.querySelector(".wrap__context").classList.add("wrap__context-flex");
 });
 
-rememberMeBtn.addEventListener("click", function(event) {
+rememberMeBtn.addEventListener("click", fetchRequest);
 
-    request.sendXhrRequest("POST", REMEMBER_CARD_URL, rememberCard)
-        .then(data => console.log(data))
-        .catch(error => console.error(error));
-});
-
+async function fetchRequest() {
+    const result = await request.sendRequestAsync(REMEMBER_CARD_URL, rememberCard);
+}
 
 
 export {

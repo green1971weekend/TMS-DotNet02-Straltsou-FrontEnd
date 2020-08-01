@@ -1,82 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <title>Learn App</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="./assets/css/login.css">
+    <title>LearnApp</title>
 </head>
-
 <body>
-
-<main class="container">
-<h2>Learn App</h2>
-<div class="wrap">
-    <div class="upside">
-        <div class="search-box">
-            <input type="text" class="search-box__input" placeholder="What word are you looking for?">
-            <div class="options"></div>
+    <div id="loginForm">
+        <div class="form-box"> 
+            <div class="button-box">
+                <div id="btn"></div>
+                <button type="button" class="toggle-btn" onclick="signIn()">Sign in</button>
+                <button type="button" class="toggle-btn" onclick="signUp()">Sign up</button>
+            </div>
+            <form id="login" class="input-group">
+                <input type="text" class="input-field" id="emailLogin" placeholder="Enter Login" required>
+                <input type="password" class="input-field" id="passwordLogin" placeholder="Enter Password" required>
+                <input type="checkbox" class="check-box"><span>Remember password</span>
+                <button type="submit" class="submit-btn" id="submitLogin">Log in</button>
+            </form>
+            <form id="register" class="input-group">
+                <input type="email" class="input-field" id="registerEmailLogin" placeholder="Enter Email">
+                <input type="password" class="input-field" id="registerPasswordLogin" placeholder="Enter Password">
+                <input type="password" class="input-field" placeholder="Confirm Password">
+                <input type="checkbox" class="check-box"><span>Remember password</span>
+                <button type="submit" class="submit-btn" id="submitRegister">Register</button>
+            </form>
         </div>
     </div>
-    <div class="main">
-        <div class="main__content">
-            <div class="left-content">
-                <div class="translate">
-                    <p>Translate</p>
-                </div>
-                <div class="picture">
-                    <i class="fas fa-chevron-right" id="nextBtn"></i>
-                    <i class="fas fa-chevron-left" id="prevBtn"></i>
-                    <div class="picture__slider"></div>
-                </div>
-                <div class="picture__introduction">Here is some intresting info about pictures.</div>
-            </div>
-            <div class="right-content">
-                <div class="introduction__context">
-                    Choose any synonym which somehow bound with your word.
-                </div>
-                <div class="wrap__context display-none">
-                    <div class="context__info">
-                        <p>Choose any synonym which somehow bound with your word.</p>
-                    </div>
-                    <div class="grid__synonyms grid__synonyms-show" >
-                        <button class="synonym__button"></button>
-                        <button class="synonym__button"></button>
-                        <button class="synonym__button"></button>
-                        <button class="synonym__button"></button>
-                        <button class="synonym__button"></button>
-                        <button class="synonym__button"></button>
-                        <button class="synonym__button"></button>
-                        <button class="synonym__button"></button>
-                    </div>
-                </div>
-                <div class="wrap__card display-none">
-                    <div class="card">
-                        <div class="card__word">commodo</div>
-                        <div class="card__description">Nulla dolor est esse aute incididunt. 
-                            Et veniam aliqua pariatur commodo anim ut reprehenderit esse deserunt sint proident. 
-                            Sit quis ut est ad elit cupidatat. Laboris laborum eiusmod fugiat adipisicing occaecat laboris proident ea laborum.
-                            Commodo aliquip dolor anim officia quis elit veniam aliquip ullamco duis eu adipisicing sunt reprehenderit.
-                            Et cupidatat ex voluptate adipisicing sit labore eiusmod aute fugiat nulla nostrud.
-                            Commodo aute consectetur fugiat velit nulla dolor laboris minim.
-                        </div>
-                        <div class="card__footer">
-                            <button class="back-to-synonyms-btn">Back to the synonyms</button>
-                            <button class="remember-context-btn">Remember me</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
-</main>
+    <script src="./assets/javascript/register.js"></script>
+    <script>
+        const login = document.getElementById("login");
+        const register = document.getElementById("register");
+        const btn = document.getElementById("btn");
 
-<script type="module" src="./assets/javascript/script.js"></script>
-<script src="./assets/javascript/API_URLs.js"></script>
+        function signUp(){
+        login.style.left = "-400px";
+        register.style.left = "50px";
+        btn.style.left = "110px";
+    }
+
+        function signIn(){
+            login.style.left = "50px";
+            register.style.left = "450px";
+            btn.style.left = "0px";
+    }
+    </script>
 
 </body>
-
 </html>

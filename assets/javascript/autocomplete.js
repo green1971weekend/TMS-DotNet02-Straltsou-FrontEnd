@@ -7,8 +7,6 @@ let searchValue = "";
 let selectedOptionIndex = -1;
 
 
-//FIX THE BUG WITH MARKING BY MOUSE AND ARROW SIMULTANEOUSLY
-
 // Autocomplete function for search box.
 function autocomplete() {
     searchBox.addEventListener("keyup", async function(event) {
@@ -39,7 +37,7 @@ function autocomplete() {
         }
         selectedOptionIndex = -1;
 
-        const response = await request.send(`https://api.datamuse.com/sug?s=${searchBox.value}`);
+        const response = await request.sendWithoutToken(`https://api.datamuse.com/sug?s=${searchBox.value}`);
         optionPannel.innerHTML = "";
         response.forEach(element => {
             const option = createOption(element.word);

@@ -1,31 +1,74 @@
-//Generalized function for getting json object from API.
-async function send (url){
+// Send request without JWT.
+async function sendWithoutToken (url){
     const response = await fetch(url);
     const content = await response.json();
     return content;
 }
 
 
-function sendXhrRequest(method, url, body = null) {
-    return new Promise((resolve, reject) => {
-        const xhr = new XMLHttpRequest();
-        xhr.open(method, url);
-        xhr.responseType = "json";
-        xhr.setRequestHeader("Content-Type", "application/json");
-        xhr.onload = () => {
-            if (xhr.status >= 400) {
-                reject(console.error(xhr.response));
-            }
-            else {
-                resolve(console.log(xhr.response));
-            }
-        }
-        xhr.onerror = () => console.error();
-        xhr.send(JSON.stringify(body));
-    }); 
+// Send async request with nested body.
+async function sendRequestAsync(url, body) {
+    const authModel = JSON.parse(localStorage.getItem("accessToken"));
+    const jwt = authModel.JwtToken;
+
+    const response = await fetch(url, {
+        method: 'POST',
+        withCredentials: true,
+        headers: {
+        'Authorization': `Bearer ${jwt}`,
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+    });
 }
 
+
+// Generalized method for all GET authorized requests. Refresh request included.
+async function sendRequestAsyncWithRefresh(method, url) {
+    const tokens = JSON.parse(localStorage.getItem("accessToken"));
+    let token = tokens.JwtToken;
+
+    const response = await fetch(url, {
+        method: method,
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            "Content-Type": "application/json",
+            'Accept': 'application/json',
+    }
+    });
+    if (response.ok) {
+        return response.json();
+    }
+    if (response.status === 401) {   
+        const tokens = JSON.parse(localStorage.getItem("accessToken"));
+        let refreshToken = tokens.RefreshToken;
+
+        const refreshResponse = await fetch("https://localhost:5001/api/account/refresh", {
+            method: 'POST',
+            withCredentials: true,
+            headers: {
+                'Authorization': `Bearer ${refreshToken}`,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(refreshToken)
+        });
+
+        const tokenData = await refreshResponse.json();
+        localStorage.setItem("accessToken", JSON.stringify(tokenData));
+    }
+    // const error = await response.json();
+    // const someError = new Error("Some error..");
+    // someError.data = error;
+}
+
+
+
+
+
 export {
-    send,
-    sendXhrRequest
+    sendRequestAsync,
+    sendWithoutToken,
+    sendRequestAsyncWithRefresh
 }
