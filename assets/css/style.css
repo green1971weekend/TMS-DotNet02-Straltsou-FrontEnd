@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;700&display=swap');
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -9,7 +9,7 @@
 
 /* #dc5959 - cool color for body */
 body {
-background-color: #e5e5e5;
+    background-color: #e5e5e5;
 }
 
 .display-none {
@@ -19,6 +19,63 @@ background-color: #e5e5e5;
 .display-flex {
     display: flex;
 }
+
+a {
+    text-decoration: none;
+    font-size: 14px;
+}
+  
+ul {
+    background: #dc5959;
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+}
+  
+li {
+    color: #fff;
+    background: #dc5959;
+    display: block;
+    float: left;
+    padding: 1rem;
+    position: relative;
+    transition-duration: 0.5s;
+}
+    
+li a {
+    color: #fff;
+}
+  
+li:hover {
+    background: #ffad06;
+    cursor: pointer;
+}
+  
+ul li ul {
+    background: #ffad06;
+    visibility: hidden;
+    opacity: 0;
+    min-width: 10rem;
+    position: absolute;
+    transition: all 0.5s ease;
+    margin-top: 1rem;
+    left: 0;
+    display: none;
+}
+  
+ul li:hover > ul,
+ul li ul:hover {
+    visibility: visible;
+    opacity: 1;
+    display: block;
+}
+
+ul li ul li {
+    clear: both;
+    width: 100%;
+}
+
+
 
 .container {
     max-width: 1240px;
@@ -32,8 +89,7 @@ h2 {
     text-align: center;
 }
 
-.upside {
-    display: flex;
+.upside__part {
     justify-content: center;
 }
 
@@ -98,7 +154,6 @@ h2 {
 }
 
 .main__content {
-    display: flex;
     height: 100%;
 }
 
@@ -241,4 +296,55 @@ h2 {
     color: white;
     outline: none;
     cursor: pointer;
+}
+
+/* Vocabulary section */
+
+.vocabulary {
+    background-color: #333;
+}
+
+.word__section {
+    padding: 8px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #666;
+}
+
+.translation {
+    width: 80%;
+    cursor: pointer;
+    padding: 15px;
+}
+
+.translation:hover {
+    background-color: #dc5959;
+    transition: all 0.7s ease-in-out;
+    border-radius: 15px;
+}
+
+.main__word-info{
+    display: flex;
+    justify-content: space-between;
+}
+
+.word__definition {
+    transition: all 0.7s ease-in-out;
+}
+
+.trash-button{
+    outline: none;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    color: #dc5959;
+}
+
+.dictionary-logo {
+    color: #ffad06;
+}
+
+.trash-button i {
+    font-size: 20px;
 }

@@ -17,7 +17,7 @@
 
 .form-box {
     width: 380px;
-    height: 480px;
+    height: 540px;
     position: relative;
     margin: 6% auto;
     background: #fff;
@@ -63,7 +63,7 @@
 .input-field{
     width: 100%;
     padding: 10px 0;
-    margin: 5px 0;
+    margin:5px auto;
     border-left: 0;
     border-right: 0;
     border-top: 0;
@@ -102,4 +102,35 @@ span {
 
 #register{
     left: 450px;
+}
+
+.form-control {
+    position: relative;
+}
+
+.form-control i {
+    visibility: hidden;
+    position: absolute;
+    top: 20px;
+    right: 10px;
+}
+
+.form-control small {
+    visibility: hidden;
+    font-size: 12px;
+}
+
+.form-control.error small {
+    visibility: visible;
+    color: #e74c3c
+}
+
+.form-control.success i.fa-check-circle {
+    visibility: visible;
+    color: #2ecc71
+}
+
+.form-control.error i.fa-exclamation-circle {
+    visibility: visible;
+    color: #e74c3c
 }

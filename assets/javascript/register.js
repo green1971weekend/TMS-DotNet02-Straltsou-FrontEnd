@@ -1,6 +1,10 @@
 const LOGIN_URL = "https://localhost:5001/api/account";
 const REGISTER_URL = "https://localhost:5001/api/account/register";
 
+const form = document.getElementById("register");
+const email = document.getElementById("registerEmailLogin");
+const password = document.getElementById("registerPasswordLogin");
+const passwordConfirmation = document.getElementById("registerPasswordConfirmation");
 
 //Request function for registration of new user.
 async function sendRegistrationRequestAsync (url, body){
@@ -13,7 +17,7 @@ async function sendRegistrationRequestAsync (url, body){
     });
 }
 
-//Registration new user function.
+//Registration new user account by current values.
 async function registerNewAccount() {
     const formData = {
         username: document.getElementById("registerEmailLogin").value,
@@ -29,12 +33,12 @@ async function registerNewAccount() {
 
 
 // Sending request to the AccountController and getting the token.
-async function getTokenAsync(url, formData) {
+async function getTokenAsync(url, body) {
 
     const response = await fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(body)
     });
     const data = await response.json();
 
@@ -61,12 +65,80 @@ document.getElementById("submitLogin").addEventListener("click", e => {
 });
 
 
-// Register account.
-document.getElementById("submitRegister").addEventListener("click", e => {
+// Register account by clicking register button.
+document.getElementById("register").addEventListener("submit", e => {
     e.preventDefault();
-    registerNewAccount();
+    checkInputs();
+
+    const validationCheck = validationFormCompleteCheck();
+    if(validationCheck) {
+        registerNewAccount(); // Request for registration of new user.
+    }
 });
 
+// Check all inputs for valid data. Display correct or not entered data.
+function checkInputs() {
+    let emailValue = email.value.trim();
+    let passwordValue = password.value.trim();
+    let passwordConfirmationValue = passwordConfirmation.value.trim();
+
+    if(emailValue === "") {
+        setErrorFor(email, "Email cannot be blank");
+    } else if(!isEmail(emailValue)) {
+        setErrorFor(email, "Email is not valid");
+    } else {
+        setSuccessFor(email);
+    }
+
+    if(passwordValue === "") {
+        setErrorFor(password, "Password cannot be blank");
+    }
+    else {
+        setSuccessFor(password);
+    }
+
+    if(passwordConfirmationValue === "") {
+        setErrorFor(passwordConfirmation, "Confirmation field cannot be blank");
+    } else if(passwordValue !== passwordConfirmationValue) {
+        setErrorFor(passwordConfirmation, "Passwords does not match");
+    } else {
+        setSuccessFor(passwordConfirmation);
+    }
+}
+
+// Display if the input field filled correct.
+function setSuccessFor(input) {
+    const formControl = input.parentElement;
+    formControl.className = "form-control success";
+}
+
+// Display if the input field filled incorrect.
+function setErrorFor(input, message) {
+    const formControl = input.parentElement;
+    formControl.className = "form-control error";
+
+    const small = formControl.querySelector("small");
+    small.innerText = message;
+}
+
+// Check if the email field corresponds to regular expression below.
+function isEmail(email) {
+    return /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
+}
+
+// Returns true if the all form fields filled correctly.
+function validationFormCompleteCheck() {
+    const formControls = document.querySelectorAll(".form-control");
+    let checkFlag = true; 
+
+    formControls.forEach(form => {
+        if(form.className !== "form-control success") {
+            checkFlag = false;
+            return checkFlag;
+        } 
+    });
+    return checkFlag;
+}
 
 
 // Animation of login-register form 

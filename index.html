@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="./assets/css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
     <title>LearnApp</title>
 </head>
 <body>
@@ -13,16 +14,33 @@
                 <button type="button" class="toggle-btn" onclick="signIn()">Sign in</button>
                 <button type="button" class="toggle-btn" onclick="signUp()">Sign up</button>
             </div>
+
             <form id="login" class="input-group">
                 <input type="text" class="input-field" id="emailLogin" placeholder="Enter Login" required>
                 <input type="password" class="input-field" id="passwordLogin" placeholder="Enter Password" required>
                 <input type="checkbox" class="check-box"><span>Remember password</span>
                 <button type="submit" class="submit-btn" id="submitLogin">Log in</button>
             </form>
+
             <form id="register" class="input-group">
-                <input type="email" class="input-field" id="registerEmailLogin" placeholder="Enter Email">
-                <input type="password" class="input-field" id="registerPasswordLogin" placeholder="Enter Password">
-                <input type="password" class="input-field" placeholder="Confirm Password">
+                <div class="form-control">
+                    <input type="email" class="input-field" id="registerEmailLogin" placeholder="Enter Email">
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <small></small>
+                </div>
+                <div class="form-control">
+                    <input type="password" class="input-field" id="registerPasswordLogin" placeholder="Enter Password">
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <small></small>
+                </div>
+                <div class="form-control">
+                    <input type="password" class="input-field" id="registerPasswordConfirmation" placeholder="Confirm Password">
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <small></small>
+                </div>
                 <input type="checkbox" class="check-box"><span>Remember password</span>
                 <button type="submit" class="submit-btn" id="submitRegister">Register</button>
             </form>
@@ -30,6 +48,7 @@
     </div>
 
     <script src="./assets/javascript/register.js"></script>
+    <script src="./assets/javascript/validation.js"></script>
     <script>
         const login = document.getElementById("login");
         const register = document.getElementById("register");

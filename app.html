@@ -11,66 +11,139 @@
 <body>
 
 <main class="container">
-<h2>Learn App</h2>
-<div class="wrap">
-    <div class="upside">
-        <div class="search-box">
-            <input type="text" class="search-box__input" placeholder="What word are you looking for?">
-            <div class="options"></div>
-        </div>
-    </div>
-    <div class="main">
-        <div class="main__content">
-            <div class="left-content">
-                <div class="translate">
-                    <p>Translate</p>
-                </div>
-                <div class="picture">
-                    <i class="fas fa-chevron-right" id="nextBtn"></i>
-                    <i class="fas fa-chevron-left" id="prevBtn"></i>
-                    <div class="picture__slider"></div>
-                </div>
-                <div class="picture__introduction">Here is some intresting info about pictures.</div>
-            </div>
-            <div class="right-content">
-                <div class="introduction__context">
-                    Choose any synonym which somehow bound with your word.
-                </div>
-                <div class="wrap__context display-none">
-                    <div class="context__info">
-                        <p>Choose any synonym which somehow bound with your word.</p>
-                    </div>
-                    <div class="grid__synonyms grid__synonyms-show" >
-                        <button class="synonym__button"></button>
-                        <button class="synonym__button"></button>
-                        <button class="synonym__button"></button>
-                        <button class="synonym__button"></button>
-                        <button class="synonym__button"></button>
-                        <button class="synonym__button"></button>
-                        <button class="synonym__button"></button>
-                        <button class="synonym__button"></button>
-                    </div>
-                </div>
-                <div class="wrap__card display-none">
-                    <div class="card">
-                        <div class="card__word">commodo</div>
-                        <div class="card__description">Nulla dolor est esse aute incididunt. 
-                            Et veniam aliqua pariatur commodo anim ut reprehenderit esse deserunt sint proident. 
-                            Sit quis ut est ad elit cupidatat. Laboris laborum eiusmod fugiat adipisicing occaecat laboris proident ea laborum.
-                            Commodo aliquip dolor anim officia quis elit veniam aliquip ullamco duis eu adipisicing sunt reprehenderit.
-                            Et cupidatat ex voluptate adipisicing sit labore eiusmod aute fugiat nulla nostrud.
-                            Commodo aute consectetur fugiat velit nulla dolor laboris minim.
-                        </div>
-                        <div class="card__footer">
-                            <button class="back-to-synonyms-btn">Back to the synonyms</button>
-                            <button class="remember-context-btn">Remember me</button>
-                        </div>
-                    </div>
-                </div>
+    <nav role="navigation">
+        <ul>
+          <li><a href="#">Menu</a>
+            <ul class="dropdown">
+              <li><a href="#">My Dictionary</a></li>
+              <li><a href="#">Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+        <button class="dictionary-button">My Dictionary</button>
+    </nav>
+
+    <div class="wrapper">
+        <!-- <h2>Learn App</h2> -->
+        <div class="upside__part display-flex">
+            <div class="search-box">
+                <input type="text" class="search-box__input" placeholder="What word are you looking for?">
+                <div class="options"></div>
             </div>
         </div>
+        <div class="main">
+            <div class="main__content display-flex">
+                <div class="left-content">
+                    <div class="translate">
+                        <p>Translate</p>
+                    </div>
+                    <div class="picture">
+                        <i class="fas fa-chevron-right" id="nextBtn"></i>
+                        <i class="fas fa-chevron-left" id="prevBtn"></i>
+                        <div class="picture__slider"></div>
+                    </div>
+                    <div class="picture__introduction">Here is some intresting info about pictures.</div>
+                </div>
+                <div class="right-content">
+                    <div class="introduction__context">
+                        Choose any synonym which somehow bound with your word.
+                    </div>
+                    <div class="wrap__context display-none">
+                        <div class="context__info">
+                            <p>Choose any synonym which somehow bound with your word.</p>
+                        </div>
+                        <div class="grid__synonyms grid__synonyms-show" >
+                            <button class="synonym__button"></button>
+                            <button class="synonym__button"></button>
+                            <button class="synonym__button"></button>
+                            <button class="synonym__button"></button>
+                            <button class="synonym__button"></button>
+                            <button class="synonym__button"></button>
+                            <button class="synonym__button"></button>
+                            <button class="synonym__button"></button>
+                        </div>
+                    </div>
+                    <div class="wrap__card display-none">
+                        <div class="card">
+                            <div class="card__word"></div>
+                            <div class="card__description"></div>
+                            <div class="card__footer">
+                                <button class="back-to-synonyms-btn">Back to the synonyms</button>
+                                <button class="remember-context-btn">Remember me</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="vocabulary">
+                <h2 class="dictionary-logo">My Dictionary</h2>
+                <div class="word__section">
+                    <div class="translation">
+                        <div class="main__word-info">
+                            <p>Black</p>
+                            <i class="fas fa-angle-down"></i>
+                        </div>
+                        <div class="word__definition display-none">Sint adipisicing sint voluptate et.
+                            Sint aute veniam ullamco in et tempor mollit cillum consequat adipisicing pariatur aliqua Lorem sit.
+                           Enim ipsum fugiat incididunt do adipisicing cillum pariatur ipsum magna sint consectetur.
+                            Enim esse occaecat tempor occaecat. Reprehenderit eiusmod quis in aliqua sunt amet. 
+                            Aliqua sit enim Lorem nostrud deserunt eu irure cillum.</div>
+                    </div>
+                    <button class="trash-button">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+                <div class="word__section">
+                    <div class="translation">
+                        <div class="main__word-info">
+                            <p>Yellow</p>
+                            <i class="fas fa-angle-down"></i>
+                        </div>
+                        <div class="word__definition display-none">Sint adipisicing sint voluptate et.
+                            Sint aute veniam ullamco in et tempor mollit cillum consequat adipisicing pariatur aliqua Lorem sit.
+                           Enim ipsum fugiat incididunt do adipisicing cillum pariatur ipsum magna sint consectetur.
+                            Enim esse occaecat tempor occaecat. Reprehenderit eiusmod quis in aliqua sunt amet. 
+                            Aliqua sit enim Lorem nostrud deserunt eu irure cillum.</div>
+                    </div>
+                    <button class="trash-button">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+                <div class="word__section">
+                    <div class="translation">
+                        <div class="main__word-info">
+                            <p>Green</p>
+                            <i class="fas fa-angle-down"></i>
+                        </div>
+                        <div class="word__definition display-none">Sint adipisicing sint voluptate et.
+                            Sint aute veniam ullamco in et tempor mollit cillum consequat adipisicing pariatur aliqua Lorem sit.
+                           Enim ipsum fugiat incididunt do adipisicing cillum pariatur ipsum magna sint consectetur.
+                            Enim esse occaecat tempor occaecat. Reprehenderit eiusmod quis in aliqua sunt amet. 
+                            Aliqua sit enim Lorem nostrud deserunt eu irure cillum.</div>
+                    </div>
+                    <button class="trash-button">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+                <div class="word__section">
+                    <div class="translation">
+                        <div class="main__word-info">
+                            <p>Pink</p>
+                            <i class="fas fa-angle-down"></i>
+                        </div>
+                        <div class="word__definition display-none">Sint adipisicing sint voluptate et.
+                            Sint aute veniam ullamco in et tempor mollit cillum consequat adipisicing pariatur aliqua Lorem sit.
+                           Enim ipsum fugiat incididunt do adipisicing cillum pariatur ipsum magna sint consectetur.
+                            Enim esse occaecat tempor occaecat. Reprehenderit eiusmod quis in aliqua sunt amet. 
+                            Aliqua sit enim Lorem nostrud deserunt eu irure cillum.</div>
+                    </div>
+                    <button class="trash-button">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            </div> -->
+        </div>
     </div>
-</div>
 
 </main>
 

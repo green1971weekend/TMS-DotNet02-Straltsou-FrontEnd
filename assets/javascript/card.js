@@ -8,7 +8,7 @@ const backToSynonymsBtn = document.querySelector(".back-to-synonyms-btn");
 const rememberMeBtn = document.querySelector(".remember-context-btn");
 
 // Insert the synonyms to the grid section and listen for click events to create info card.
-function createCard() {
+async function createCard() {
     synonymButtons.forEach(button => button.addEventListener("click", async function(event) {
 
         const ContextURL = API_URL.getDatamuseUrl(button.textContent);

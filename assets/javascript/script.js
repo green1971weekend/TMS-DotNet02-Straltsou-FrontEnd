@@ -2,6 +2,7 @@ import * as request from "./request.js";
 import * as search from "./autocomplete.js";
 import * as picture from "./picture.js";
 import * as card from "./card.js";
+import * as dictionary from "./dictionary.js";
 
 //https://api.datamuse.com/words?ml=ringing+in+the+ears - feature for search the similar words for input of few (ringing+in+the+ears)
 
@@ -43,6 +44,7 @@ async function searchForContext() {
 
     return responseContext;
 }
+
 
 function main() {
     if(!localStorage.getItem("accessToken")){
