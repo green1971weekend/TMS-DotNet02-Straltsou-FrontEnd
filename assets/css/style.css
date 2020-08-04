@@ -20,77 +20,44 @@ body {
     display: flex;
 }
 
-a {
-    text-decoration: none;
-    font-size: 14px;
+nav {
+    height: 10vh;
+    background: linear-gradient(to right, #ff105f, #ffad06);
 }
-  
-ul {
-    background: #dc5959;
+
+.nav-links {
+    display: flex;
     list-style: none;
-    margin: 0;
-    padding-left: 0;
-}
-  
-li {
-    color: #fff;
-    background: #dc5959;
-    display: block;
-    float: left;
-    padding: 1rem;
-    position: relative;
-    transition-duration: 0.5s;
-}
-    
-li a {
-    color: #fff;
-}
-  
-li:hover {
-    background: #ffad06;
-    cursor: pointer;
-}
-  
-ul li ul {
-    background: #ffad06;
-    visibility: hidden;
-    opacity: 0;
-    min-width: 10rem;
-    position: absolute;
-    transition: all 0.5s ease;
-    margin-top: 1rem;
-    left: 0;
-    display: none;
-}
-  
-ul li:hover > ul,
-ul li ul:hover {
-    visibility: visible;
-    opacity: 1;
-    display: block;
+    height: 100%;
+    width: 50%;
+    justify-content: space-around;
+    align-items: center;
+    margin-left: auto;
 }
 
-ul li ul li {
-    clear: both;
-    width: 100%;
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
 }
-
 
 
 .container {
+    height: 90vh;
     max-width: 1240px;
     margin: 0 auto;
     background-color: white;
 }
 
-h2 {
+.app-logo {
     font-size: 4rem;
-    margin-bottom: 1rem;
+    padding: 2rem;
     text-align: center;
 }
 
 .upside__part {
     justify-content: center;
+    padding-bottom: 1rem;
 }
 
 .search-box {
@@ -141,7 +108,7 @@ h2 {
 }
 
 .main {
-    margin-top: 1.5rem;
+    /* margin-top: 1.5rem; */
     background-color: #333;
     height: 600px;
 }
@@ -342,6 +309,9 @@ h2 {
 }
 
 .dictionary-logo {
+    font-size: 4rem;
+    padding: 2rem;
+    text-align: center;
     color: #ffad06;
 }
 

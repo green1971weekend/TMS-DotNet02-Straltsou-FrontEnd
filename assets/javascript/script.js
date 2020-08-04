@@ -7,6 +7,8 @@ import * as dictionary from "./dictionary.js";
 //https://api.datamuse.com/words?ml=ringing+in+the+ears - feature for search the similar words for input of few (ringing+in+the+ears)
 
 const translate = document.querySelector(".translate");
+const homeButton = document.querySelector(".home");
+const logoutButton = document.querySelector(".logout");
 
 
 // Refresh the page with updated info.
@@ -54,6 +56,14 @@ function main() {
     search.autocomplete();
     card.createCard();
 }
+
+homeButton.addEventListener("click", event => {
+    location.replace("/app.html")
+});
+
+logoutButton.addEventListener("click", event => {
+    location.replace("/index.html");
+});
 
 
 

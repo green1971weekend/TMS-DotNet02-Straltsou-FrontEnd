@@ -106,13 +106,13 @@ function checkInputs() {
     }
 }
 
-// Display if the input field filled correct.
+// Display if the input field correct.
 function setSuccessFor(input) {
     const formControl = input.parentElement;
     formControl.className = "form-control success";
 }
 
-// Display if the input field filled incorrect.
+// Display if the input field incorrect.
 function setErrorFor(input, message) {
     const formControl = input.parentElement;
     formControl.className = "form-control error";
@@ -126,7 +126,7 @@ function isEmail(email) {
     return /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
 }
 
-// Returns true if the all form fields filled correctly.
+// Returns true if the all form fields are correctly filled.
 function validationFormCompleteCheck() {
     const formControls = document.querySelectorAll(".form-control");
     let checkFlag = true; 
