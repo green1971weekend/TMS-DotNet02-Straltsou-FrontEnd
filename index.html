@@ -7,6 +7,16 @@
     <title>LearnApp</title>
 </head>
 <body>
+    <div class="loader hidden">
+        <img src="./assets/css/Loading.gif" alt="Loading">
+    </div>
+    <h1 class="app-logo">Learn English</h2>
+
+    <div class="register-successful-wrapper display-none">
+        <p>Thank you for registering. We have sent a verification email to the provided address.</p>
+        <i class="fas fa-envelope"></i>
+    </div>
+
     <div id="loginForm">
         <div class="form-box"> 
             <div class="button-box">
@@ -16,7 +26,7 @@
             </div>
 
             <form id="login" class="input-group">
-                <input type="text" class="input-field" id="emailLogin" placeholder="Enter Login" required>
+                <input type="email" class="input-field" id="emailLogin" placeholder="Enter Login" required>
                 <input type="password" class="input-field" id="passwordLogin" placeholder="Enter Password" required>
                 <input type="checkbox" class="check-box"><span>Remember password</span>
                 <button type="submit" class="submit-btn" id="submitLogin">Log in</button>
@@ -49,6 +59,11 @@
 
     <script src="./assets/javascript/register.js"></script>
     <script>
+        window.addEventListener("load", function (){
+            const loader = document.querySelector(".loader");
+            loader.className += " hidden";
+        });
+
         const login = document.getElementById("login");
         const register = document.getElementById("register");
         const btn = document.getElementById("btn");

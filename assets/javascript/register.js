@@ -1,45 +1,53 @@
 const LOGIN_URL = "https://localhost:5001/api/account";
 const REGISTER_URL = "https://localhost:5001/api/account/register";
 
+const loader = document.querySelector(".loader");
+
 const form = document.getElementById("register");
 const email = document.getElementById("registerEmailLogin");
 const password = document.getElementById("registerPasswordLogin");
 const passwordConfirmation = document.getElementById("registerPasswordConfirmation");
 
+const loginForm = document.getElementById("login");
+const emailLoginForm = document.getElementById("emailLogin");
+const passwordLoginForm = document.getElementById("passwordLogin");
+
+const registerSuccededMessage = document.querySelector(".register-successful-wrapper");
+
 //Request function for registration of new user.
-async function sendRegistrationRequestAsync (url, body){
-    return await fetch(url, {
+async function sendAuthenticationRequestAsync (url, body){
+    loader.classList.toggle("hidden");
+
+    const response = await fetch(url, {
         method: 'POST',
-        headers: {
-        'Content-Type': 'application/json'
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body)
     });
+    loader.classList.toggle("hidden");
+    return response;
 }
 
 //Registration new user account by current values.
 async function registerNewAccount() {
+
     const formData = {
         username: document.getElementById("registerEmailLogin").value,
         password: document.getElementById("registerPasswordLogin").value
     }
 
-    const response = await sendRegistrationRequestAsync(REGISTER_URL, formData);
+    const response = await sendAuthenticationRequestAsync(REGISTER_URL, formData);
 
     if (response.ok === true) {
-        getTokenAsync(LOGIN_URL, formData);
+        registerSuccededMessage.classList.remove("display-none");
+        registerSuccededMessage.classList.add("display-flex");
     }
 }
 
 
 // Sending request to the AccountController and getting the token.
 async function getTokenAsync(url, body) {
-
-    const response = await fetch(url, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body)
-    });
+    
+    const response = await sendAuthenticationRequestAsync(url, body);
     const data = await response.json();
 
     if (response.ok === true) {
@@ -52,32 +60,8 @@ async function getTokenAsync(url, body) {
 };
 
 
-// Get JSON web token and login to account.
-document.getElementById("submitLogin").addEventListener("click", e => {
-    e.preventDefault();
-
-    const formData = {
-        username: document.getElementById("emailLogin").value,
-        password: document.getElementById("passwordLogin").value
-    }
-
-    getTokenAsync(LOGIN_URL, formData);
-});
-
-
-// Register account by clicking register button.
-document.getElementById("register").addEventListener("submit", e => {
-    e.preventDefault();
-    checkInputs();
-
-    const validationCheck = validationFormCompleteCheck();
-    if(validationCheck) {
-        registerNewAccount(); // Request for registration of new user.
-    }
-});
-
-// Check all inputs for valid data. Display correct or not entered data.
-function checkInputs() {
+// Check all registration form inputs for valid data. Display correct or not entered data.
+function checkRegistrationFormInputs() {
     let emailValue = email.value.trim();
     let passwordValue = password.value.trim();
     let passwordConfirmationValue = passwordConfirmation.value.trim();
@@ -92,6 +76,8 @@ function checkInputs() {
 
     if(passwordValue === "") {
         setErrorFor(password, "Password cannot be blank");
+    } else if(passwordValue.length < 8) {
+        setErrorFor(password, "Password length must be minimum 8 symbols");
     }
     else {
         setSuccessFor(password);
@@ -137,8 +123,35 @@ function validationFormCompleteCheck() {
             return checkFlag;
         } 
     });
+
     return checkFlag;
 }
+
+// Get JSON web token and login to account.
+document.getElementById("submitLogin").addEventListener("click", e => {
+    e.preventDefault();
+
+    const formData = {
+        username: document.getElementById("emailLogin").value,
+        password: document.getElementById("passwordLogin").value
+    }
+
+    if(formData.username && formData.password) {
+        getTokenAsync(LOGIN_URL, formData); // Get new JWT and refresh token.
+    }
+});
+
+
+// Register account by clicking register button.
+document.getElementById("register").addEventListener("submit", e => {
+    e.preventDefault();
+    checkRegistrationFormInputs();
+
+    const validationCheck = validationFormCompleteCheck();
+    if(validationCheck) {
+        registerNewAccount(); // Request for registration of new user.
+    }
+});
 
 
 // Animation of login-register form 

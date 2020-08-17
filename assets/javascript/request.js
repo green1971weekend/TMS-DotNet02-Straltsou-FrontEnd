@@ -5,13 +5,12 @@ async function sendWithoutToken (url){
     return content;
 }
 
-
 // Send async request with nested body.
 async function sendRequestAsync(url, body) {
     const authModel = JSON.parse(localStorage.getItem("accessToken"));
     const jwt = authModel.JwtToken;
 
-    const response = await fetch(url, {
+    return await fetch(url, {
         method: 'POST',
         withCredentials: true,
         headers: {
@@ -22,7 +21,6 @@ async function sendRequestAsync(url, body) {
         body: JSON.stringify(body)
     });
 }
-
 
 // Generalized method for all GET authorized requests. Refresh request included.
 async function sendRequestAsyncWithRefresh(method, url) {

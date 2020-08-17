@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap');
 
 * {
     margin: 0;
@@ -22,7 +23,7 @@ body {
 
 nav {
     height: 10vh;
-    background: linear-gradient(to right, #ff105f, #ffad06);
+    background: linear-gradient(to right, #777575, #1f1c17);
 }
 
 .nav-links {
@@ -39,6 +40,13 @@ nav {
     color: white;
     text-decoration: none;
     font-size: 16px;
+    padding: 12px;
+    border-radius: 24px;
+}
+
+.nav-links li a:hover {
+    background-color: #ffad06;
+    transition: all 0.7s ease;
 }
 
 
@@ -110,12 +118,13 @@ nav {
 .main {
     /* margin-top: 1.5rem; */
     background-color: #333;
-    height: 600px;
+    height: 90vh;
 }
 
 .left-content {
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
     align-items: center;
     width: 50%;
 }
@@ -129,9 +138,16 @@ nav {
     width: 100%;
     min-height: 10%;
     display: flex;
+    padding: 8px;
     align-items: center;
     justify-content: center;
-    color: white
+    color: white;
+    text-align: center;
+}
+
+.main__content .translate p {
+    font-family: 'Gloria Hallelujah', cursive;
+    font-size: 20px;
 }
 
 .main__content .picture {
@@ -142,9 +158,13 @@ nav {
     position: relative;
 }
 
-.picture__introduction {
+.picture__introduction p {
+    text-align: center;
     color: white;
-    margin-top: 15px;
+    margin-top: 16px;
+    font-family: 'Gloria Hallelujah', cursive;
+    font-size: 34px;
+    padding: 8px;
 }
 
 
@@ -175,7 +195,11 @@ nav {
 }
 
 
-.introduction__context {
+.introduction__context p{
+    font-family: 'Gloria Hallelujah', cursive;
+    font-size: 34px;
+    line-height: 3rem;
+    padding: 8px;
     text-align: center;
 }
 
@@ -209,13 +233,6 @@ nav {
     border: none;
     cursor: pointer;
     outline: none;
-}
-
-.wrap__context-flex {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    height: 100%;
 }
 
 .wrap__card {
@@ -268,6 +285,7 @@ nav {
 /* Vocabulary section */
 
 .vocabulary {
+    margin-top: 20px;
     background-color: #333;
 }
 
@@ -298,6 +316,7 @@ nav {
 
 .word__definition {
     transition: all 0.7s ease-in-out;
+    margin-top: 8px;
 }
 
 .trash-button{
@@ -317,4 +336,76 @@ nav {
 
 .trash-button i {
     font-size: 20px;
+}
+
+
+
+/* Media Queries */
+
+@media(max-width: 860px){
+    .main {
+        height: 100%;
+    }
+
+    .main__content {
+        flex-direction: column;
+    }
+
+    .main__content .translate {
+        padding: 24px;
+    }
+
+    .left-content {
+        width: 100%;
+    }
+
+    .main__content .right-content {
+        width: 100%;
+        height: 100vh;
+    }
+
+    .vocabulary{
+        height: 100vh;
+    }
+}
+
+@media(max-width: 600px){
+    .nav-links {
+        width: 100%;
+    }
+}
+
+@media(max-height: 800px){
+    .container {
+        height: 100%;
+    }
+}
+
+@media(max-width: 480px) {
+    .card .card__footer {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .remember-context-btn, .back-to-synonyms-btn {
+        width: 150px;
+        margin-bottom: 10px;
+    }
+
+    .vocabulary .dictionary-logo {
+        font-size: 2rem;
+    }
+}
+
+@media(max-width: 400px){
+    .main__content .picture {
+        width: 375px;
+    }
+}
+
+@media(max-width: 375px){
+
+    .main__content .picture {
+        width: 320px;
+    }
 }

@@ -4,8 +4,6 @@ import * as picture from "./picture.js";
 import * as card from "./card.js";
 import * as dictionary from "./dictionary.js";
 
-//https://api.datamuse.com/words?ml=ringing+in+the+ears - feature for search the similar words for input of few (ringing+in+the+ears)
-
 const translate = document.querySelector(".translate");
 const homeButton = document.querySelector(".home");
 const logoutButton = document.querySelector(".logout");
@@ -21,9 +19,6 @@ async function displayFullInfo() {
     await searchForContext();
 
     document.querySelector(".wrap__context").classList.remove("display-none");
-    document.querySelector(".wrap__context").classList.add("wrap__context-flex");
-
-    document.querySelector(".introduction__context").style.display = "none";
     
     picture.displayFilteredResult();
 }
@@ -47,7 +42,7 @@ async function searchForContext() {
     return responseContext;
 }
 
-
+// Main function for transfer functionality from modules.
 function main() {
     if(!localStorage.getItem("accessToken")){
         location.replace("/index.html");

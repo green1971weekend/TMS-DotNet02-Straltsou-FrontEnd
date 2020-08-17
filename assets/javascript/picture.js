@@ -22,9 +22,14 @@ async function searchForPicture() {
 // Display filtered pictures and assign events for prev,next buttons.
 async function displayFilteredResult() {
     slider.innerHTML = "";
-    introductionInfo.innerHTML = "";
+    introductionInfo.children[0].textContent = "";
 
     const responsePicture = await searchForPicture();
+    if(responsePicture.Total === 0) {
+        introductionInfo.children[0].textContent = "Oops.. coudn't find any picture";
+        return;
+    }
+
     const filteredImage = responsePicture.Results.filter(img => img.height > 4500);
     let i = 0;
     filteredImage.forEach(img => { 

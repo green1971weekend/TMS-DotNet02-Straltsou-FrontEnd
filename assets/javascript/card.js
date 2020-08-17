@@ -1,7 +1,7 @@
 import * as request from "./request.js";
 
 let rememberCard;
-const REMEMBER_CARD_URL = "https://localhost:5001/api/content";
+const REMEMBER_CARD_URL = "https://localhost:5001/api/card";
 
 const synonymButtons = document.querySelectorAll(".synonym__button");
 const backToSynonymsBtn = document.querySelector(".back-to-synonyms-btn");
@@ -51,8 +51,14 @@ backToSynonymsBtn.addEventListener("click", function(event) {
 
 rememberMeBtn.addEventListener("click", fetchRequest);
 
+// Send request for remember card content.
 async function fetchRequest() {
     const result = await request.sendRequestAsync(REMEMBER_CARD_URL, rememberCard);
+
+    if(result.ok === true) {
+        document.querySelector(".wrap__card").classList.remove("display-flex");
+        document.querySelector(".wrap__context").classList.add("wrap__context-flex");
+    }
 }
 
 
