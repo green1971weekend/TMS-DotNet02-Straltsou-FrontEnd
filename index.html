@@ -22,7 +22,7 @@
             <div class="button-box">
                 <div id="btn"></div>
                 <button type="button" class="toggle-btn" onclick="signIn()">Sign in</button>
-                <button type="button" class="toggle-btn" onclick="signUp()">Sign up</button>
+                <button type="button" class="toggle-btn" onclick="signUp()">Sign up</button> <!--replace in js file -->
             </div>
 
             <form id="login" class="input-group">
@@ -59,9 +59,9 @@
 
     <script src="./assets/javascript/register.js"></script>
     <script>
-        window.addEventListener("load", function (){
+        window.addEventListener("load", function (){            //TODO:replace in js file
             const loader = document.querySelector(".loader");
-            loader.className += " hidden";
+            loader.classList.add("hidden");
         });
 
         const login = document.getElementById("login");
