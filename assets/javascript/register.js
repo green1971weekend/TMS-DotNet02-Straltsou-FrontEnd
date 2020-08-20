@@ -3,12 +3,13 @@ const REGISTER_URL = "https://localhost:5001/api/account/register";
 
 const loader = document.querySelector(".loader");
 
-const form = document.getElementById("register");
+const loginForm = document.getElementById("login");
+const registerForm = document.getElementById("register");
+
 const email = document.getElementById("registerEmailLogin");
 const password = document.getElementById("registerPasswordLogin");
 const passwordConfirmation = document.getElementById("registerPasswordConfirmation");
 
-const loginForm = document.getElementById("login");
 const emailLoginForm = document.getElementById("emailLogin");
 const passwordLoginForm = document.getElementById("passwordLogin");
 
@@ -128,7 +129,7 @@ function validationFormCompleteCheck() {
 }
 
 // Get JSON web token and login to account.
-document.getElementById("submitLogin").addEventListener("click", e => {
+loginForm.addEventListener("click", e => {
     e.preventDefault();
 
     const formData = {
@@ -143,7 +144,7 @@ document.getElementById("submitLogin").addEventListener("click", e => {
 
 
 // Register account by clicking register button.
-document.getElementById("register").addEventListener("submit", e => {
+registerForm.addEventListener("submit", e => {
     e.preventDefault();
     checkRegistrationFormInputs();
 
@@ -156,32 +157,22 @@ document.getElementById("register").addEventListener("submit", e => {
 
 // Animation of login-register form 
 
-// const login = document.querySelector(".toggle-login");
-// const register = document.querySelector(".toggle-register");
-// const btn = document.getElementById("btn");
+const btn = document.getElementById("btn");
 
-// function register(){
-//     login.style.left = "-400px";
-//     register.style.left = "50px";
-//     btn.style.left = "110px";
-// }
+const signInButton = document.querySelector(".toggle-btn-in");
+const signUpButton = document.querySelector(".toggle-btn-up");
 
-// function login(){
-//     login.style.left = "50px";
-//     register.style.left = "450px";
-//     btn.style.left = "0px";
-// }
+function registerFormShift(){
+    loginForm.style.left = "-400px";
+    registerForm.style.left = "50px";
+    btn.style.left = "110px";
+}
 
-// register.addEventListener("click", function (e){
-//     login.style.left = "-400px";
-//     register.style.left = "50px";
-//     btn.style.left = "110px";
-// });
+function loginFormShift(){
+    loginForm.style.left = "50px";
+    registerForm.style.left = "450px";
+    btn.style.left = "0px";
+}
 
-// login.addEventListener("click", function (e){
-//     login.style.left = "50px";
-//     register.style.left = "450px";
-//     btn.style.left = "0px";
-// });
-
-
+signUpButton.addEventListener("click", registerFormShift);
+signInButton.addEventListener("click", loginFormShift);

@@ -9,7 +9,6 @@ async function getRememberedCards() {
         const userId = authModel.Id;
     
         const data = await request.sendRequestAsyncWithRefresh("GET", `https://localhost:5001/api/card/vocabulary?userId=${userId}`);
-        console.log(data);
         
         data.forEach(element => {
             const rememberedWordElement = document.createElement("div");

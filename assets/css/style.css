@@ -8,7 +8,6 @@
     font-family: 'Comfortaa', cursive;
 }
 
-/* #dc5959 - cool color for body */
 body {
     background-color: #e5e5e5;
 }
@@ -86,14 +85,6 @@ nav {
     color: white;
 }
 
-.search-box__searchbtn .fas {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 20px;
-}
-
 .options {
     border-top: 2px solid #999;
 }
@@ -116,7 +107,6 @@ nav {
 }
 
 .main {
-    /* margin-top: 1.5rem; */
     background-color: #333;
     height: 90vh;
 }
@@ -283,7 +273,6 @@ nav {
 }
 
 /* Vocabulary section */
-
 .vocabulary {
     margin-top: 20px;
     background-color: #333;
@@ -341,7 +330,6 @@ nav {
 
 
 /* Media Queries */
-
 @media(max-width: 860px){
     .main {
         height: 100%;

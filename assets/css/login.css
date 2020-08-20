@@ -106,7 +106,15 @@ body {
     border-radius: 30px;
 }
 
-.toggle-btn {
+.toggle-btn-in {
+    padding: 10px 30px;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    outline: none;
+    position: relative;
+}
+.toggle-btn-up {
     padding: 10px 30px;
     cursor: pointer;
     background: transparent;

@@ -25,13 +25,14 @@ async function displayFilteredResult() {
     introductionInfo.children[0].textContent = "";
 
     const responsePicture = await searchForPicture();
-    if(responsePicture.Total === 0) {
+    const filteredImage = responsePicture.Results.filter(img => img.height > 4500);
+    let i = 0;
+
+    if(filteredImage.length === 0) {
         introductionInfo.children[0].textContent = "Oops.. coudn't find any picture";
         return;
     }
 
-    const filteredImage = responsePicture.Results.filter(img => img.height > 4500);
-    let i = 0;
     filteredImage.forEach(img => { 
         const element = document.createElement("img");
         element.src = filteredImage[i++].urls.small;

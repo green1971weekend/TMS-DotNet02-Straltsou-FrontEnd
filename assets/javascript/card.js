@@ -7,6 +7,8 @@ const synonymButtons = document.querySelectorAll(".synonym__button");
 const backToSynonymsBtn = document.querySelector(".back-to-synonyms-btn");
 const rememberMeBtn = document.querySelector(".remember-context-btn");
 
+const introductionContext = document.querySelector(".introduction__context");
+
 // Insert the synonyms to the grid section and listen for click events to create info card.
 async function createCard() {
     synonymButtons.forEach(button => button.addEventListener("click", async function(event) {
@@ -47,18 +49,40 @@ backToSynonymsBtn.addEventListener("click", function(event) {
 
     document.querySelector(".wrap__card").classList.remove("display-flex");
     document.querySelector(".wrap__context").classList.add("wrap__context-flex");
+
+    introductionContext.children[0].textContent = "Choose any synonym which somehow bound with your word."
 });
 
-rememberMeBtn.addEventListener("click", fetchRequest);
+rememberMeBtn.addEventListener("click", rememberNewCard);
 
 // Send request for remember card content.
-async function fetchRequest() {
-    const result = await request.sendRequestAsync(REMEMBER_CARD_URL, rememberCard);
+async function rememberNewCard() {
 
-    if(result.ok === true) {
-        document.querySelector(".wrap__card").classList.remove("display-flex");
-        document.querySelector(".wrap__context").classList.add("wrap__context-flex");
+    const authModel = JSON.parse(localStorage.getItem("accessToken"));
+    const userId = authModel.Id;
+    const data = await request.sendRequestAsyncWithRefresh("GET", `https://localhost:5001/api/card/vocabulary?userId=${userId}`);
+    
+    const wordAlreadyExists = containsWord(data, rememberCard.word)
+    if(!wordAlreadyExists) {
+        const result = await request.sendRequestAsync(REMEMBER_CARD_URL, rememberCard);
+
+        if(result.ok === true) {
+            document.querySelector(".wrap__card").classList.remove("display-flex");
+            document.querySelector(".wrap__context").classList.add("wrap__context-flex");
+        }
+    } else {
+        introductionContext.children[0].textContent = "Current word already exists in your dictionary."
     }
+}
+
+//Check function for presence of requested word in dictionary.
+function containsWord(data, obj) {
+    for (var i = 0; i < data.length; i++) {
+        if (data[i].Word === obj) {
+            return true;
+        }
+    }
+    return false;
 }
 
 

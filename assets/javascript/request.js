@@ -32,7 +32,7 @@ async function sendRequestAsyncWithRefresh(method, url) {
         headers: {
             'Authorization': `Bearer ${token}`,
             "Content-Type": "application/json",
-            'Accept': 'application/json',
+            'Accept': 'application/json'
     }
     });
     if (response.ok) {
@@ -48,7 +48,7 @@ async function sendRequestAsyncWithRefresh(method, url) {
             headers: {
                 'Authorization': `Bearer ${refreshToken}`,
                 'Accept': 'application/json',
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify(refreshToken)
         });

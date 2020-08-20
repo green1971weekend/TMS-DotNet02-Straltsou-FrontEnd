@@ -15,7 +15,7 @@ async function displayFullInfo() {
     document.querySelector(".wrap__card").classList.add("display-none")
 
     const responseTranslate = await searchForTranslate();
-    translate.textContent = responseTranslate.Text;
+    translate.textContent = responseTranslate.Outputs[0].Output;
     await searchForContext();
 
     document.querySelector(".wrap__context").classList.remove("display-none");
