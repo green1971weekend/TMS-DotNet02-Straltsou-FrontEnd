@@ -42,7 +42,7 @@ async function sendRequestAsyncWithRefresh(method, url) {
         const tokens = JSON.parse(localStorage.getItem("accessToken"));
         let refreshToken = tokens.RefreshToken;
 
-        const refreshResponse = await fetch("https://localhost:5001/api/account/refresh", {
+        const refreshResponse = await fetch("https://learn-application.herokuapp.com/api/account/refresh", {
             method: 'POST',
             withCredentials: true,
             headers: {

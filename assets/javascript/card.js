@@ -1,7 +1,7 @@
 import * as request from "./request.js";
 
 let rememberCard;
-const REMEMBER_CARD_URL = "https://localhost:5001/api/card";
+const REMEMBER_CARD_URL = "https://learn-application.herokuapp.com/api/card";
 
 const synonymButtons = document.querySelectorAll(".synonym__button");
 const backToSynonymsBtn = document.querySelector(".back-to-synonyms-btn");
@@ -60,7 +60,7 @@ async function rememberNewCard() {
 
     const authModel = JSON.parse(localStorage.getItem("accessToken"));
     const userId = authModel.Id;
-    const data = await request.sendRequestAsyncWithRefresh("GET", `https://localhost:5001/api/card/vocabulary?userId=${userId}`);
+    const data = await request.sendRequestAsyncWithRefresh("GET", `https://learn-application.herokuapp.com/api/card/vocabulary?userId=${userId}`);
     
     const wordAlreadyExists = containsWord(data, rememberCard.word)
     if(!wordAlreadyExists) {

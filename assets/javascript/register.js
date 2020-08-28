@@ -1,5 +1,5 @@
-const LOGIN_URL = "https://localhost:5001/api/account";
-const REGISTER_URL = "https://localhost:5001/api/account/register";
+const LOGIN_URL = "https://learn-application.herokuapp.com/api/account";
+const REGISTER_URL = "https://learn-application.herokuapp.com/api/account/register";
 
 const loader = document.querySelector(".loader");
 
@@ -37,7 +37,7 @@ async function registerNewAccount() {
     }
 
     const response = await sendAuthenticationRequestAsync(REGISTER_URL, formData);
-
+    
     if (response.ok === true) {
         registerSuccededMessage.classList.remove("display-none");
         registerSuccededMessage.classList.add("display-flex");

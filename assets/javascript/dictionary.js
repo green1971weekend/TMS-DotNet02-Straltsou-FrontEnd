@@ -8,7 +8,7 @@ async function getRememberedCards() {
         const authModel = JSON.parse(localStorage.getItem("accessToken"));
         const userId = authModel.Id;
     
-        const data = await request.sendRequestAsyncWithRefresh("GET", `https://localhost:5001/api/card/vocabulary?userId=${userId}`);
+        const data = await request.sendRequestAsyncWithRefresh("GET", `https://learn-application.herokuapp.com/api/card/vocabulary?userId=${userId}`);
         
         data.forEach(element => {
             const rememberedWordElement = document.createElement("div");
@@ -64,7 +64,7 @@ function wordSectionEvents() {
     //Delete word section from dictionary event listener.
     deleteButton.forEach(element => {
         element.addEventListener("click", function (event) {
-            request.sendRequestAsyncWithRefresh("DELETE", `https://localhost:5001/api/card/${this.dataset.id}`);
+            request.sendRequestAsyncWithRefresh("DELETE", `https://learn-application.herokuapp.com/api/card/${this.dataset.id}`);
             element.parentElement.remove();
         });
     });
