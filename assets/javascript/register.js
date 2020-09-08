@@ -14,6 +14,7 @@ const emailLoginForm = document.getElementById("emailLogin");
 const passwordLoginForm = document.getElementById("passwordLogin");
 
 const registerSuccededMessage = document.querySelector(".register-successful-wrapper");
+const incorrectPasswordMessage = document.querySelector(".password-incorrect-wrapper");
 
 //Request function for registration of new user.
 async function sendAuthenticationRequestAsync (url, body){
@@ -56,7 +57,8 @@ async function getTokenAsync(url, body) {
         location.replace("/app.html");
      }
     else {
-        console.log("Error: ", response.status, data.errorText);
+        incorrectPasswordMessage.classList.remove("display-none");
+        incorrectPasswordMessage.classList.add("display-flex");
     }
 };
 
