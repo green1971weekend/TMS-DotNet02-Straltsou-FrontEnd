@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="./assets/css/login.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css"
+    integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
+  <title>LearnApp</title>
+</head>
+
+<body>
+  <div class="loader hidden">
+    <img src="./assets/css/Loading.gif" alt="Loading">
+  </div>
+  <h1 class="app-logo">Learn English</h2>
+
+    <div class="register-successful-wrapper display-none">
+      <p>Thank you for registering. We have sent a verification email to the provided address.</p>
+      <i class="fas fa-envelope"></i>
+    </div>
+    <div class="password-incorrect-wrapper display-none">
+      <p>Entered password is incorrect</p>
+    </div>
+
+    <div id="loginForm">
+      <div class="form-box">
+        <div class="button-box">
+          <div id="btn"></div>
+          <button type="button" class="toggle-btn-in">Sign in</button>
+          <button type="button" class="toggle-btn-up">Sign up</button>
+        </div>
+
+        <form id="login" class="input-group">
+          <input type="email" class="input-field" id="emailLogin" placeholder="Enter Login" required>
+          <input type="password" class="input-field" id="passwordLogin" placeholder="Enter Password" required>
+          <input type="checkbox" class="check-box"><span>Remember password</span>
+          <button type="submit" class="submit-btn" id="submitLogin">Log in</button>
+        </form>
+
+        <form id="register" class="input-group">
+          <div class="form-control">
+            <input type="email" class="input-field" id="registerEmailLogin" placeholder="Enter Email">
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small></small>
+          </div>
+          <div class="form-control">
+            <input type="password" class="input-field" id="registerPasswordLogin" placeholder="Enter Password">
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small></small>
+          </div>
+          <div class="form-control">
+            <input type="password" class="input-field" id="registerPasswordConfirmation" placeholder="Confirm Password">
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small></small>
+          </div>
+          <input type="checkbox" class="check-box"><span>Remember password</span>
+          <button type="submit" class="submit-btn" id="submitRegister">Register</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="./assets/javascript/register.js"></script>
+</body>
+
+</html>
