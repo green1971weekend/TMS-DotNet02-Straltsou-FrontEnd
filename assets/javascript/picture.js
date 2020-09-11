@@ -1,4 +1,4 @@
-import * as search from "./autocomplete.js"
+import * as search from "./autocomplete.js";
 import * as request from "./request.js";
 
 const slider = document.querySelector(".picture__slider");
@@ -12,55 +12,60 @@ let counter = 0;
 
 // Get JSON result of pictures.
 async function searchForPicture() {
-    const PictureURL = API_URL.getUnsplashUrl(search.value);   
-    const responsePicture = await request.sendRequestAsyncWithRefresh("GET", PictureURL);
+  const PictureURL = API_URL.getUnsplashUrl(search.value);
+  const responsePicture = await request.sendRequestAsyncWithRefresh(
+    "GET",
+    PictureURL
+  );
 
-    return responsePicture;
+  return responsePicture;
 }
 
 // Filter JSON result of pictures by the suitable size.
 // Display filtered pictures and assign events for prev,next buttons.
 async function displayFilteredResult() {
-    slider.innerHTML = "";
-    introductionInfo.children[0].textContent = "";
+  slider.innerHTML = "";
+  introductionInfo.children[0].textContent = "";
 
-    const responsePicture = await searchForPicture();
-    const filteredImage = responsePicture.Results.filter(img => img.height > 4500);
-    let i = 0;
+  const responsePicture = await searchForPicture();
+  const filteredImage = responsePicture.Results.filter(
+    (img) => img.height > 4500
+  );
+  let i = 0;
 
-    if(filteredImage.length === 0) {
-        introductionInfo.children[0].textContent = "Oops.. coudn't find any picture";
-        return;
-    }
+  if (filteredImage.length === 0) {
+    introductionInfo.children[0].textContent =
+      "Oops.. coudn't find any picture";
+    return;
+  }
 
-    filteredImage.forEach(img => { 
-        const element = document.createElement("img");
-        element.src = filteredImage[i++].urls.small;
-        slider.appendChild(element);
-    });
+  filteredImage.forEach((img) => {
+    const element = document.createElement("img");
+    element.src = filteredImage[i++].urls.small;
+    slider.appendChild(element);
+  });
 
-    sliderImages = document.querySelectorAll(".picture__slider img");
+  sliderImages = document.querySelectorAll(".picture__slider img");
 }
 
-
 //Event for clicking the next picture button.
-nextButton.addEventListener("click", function(){
-    if(counter >= sliderImages.length - 1) {
-        return;
-    }
-    slider.style.transition = "all 0.4s ease-in-out";
-    counter++;
-    slider.style.transform = "translateX(" + (-400 * counter) + "px";
+nextButton.addEventListener("click", function () {
+  if (counter >= sliderImages.length - 1) {
+    return;
+  }
+  slider.style.transition = "all 0.4s ease-in-out";
+  counter++;
+  slider.style.transform = "translateX(" + -400 * counter + "px";
 });
 
 //Event for clicking the previous picture button.
-prevButton.addEventListener("click", function(){
-    if(counter <= 0) {
-        return;
-    }
-    slider.style.transition = "all 0.4s ease-in-out";
-    counter--;
-    slider.style.transform = "translateX(" + (-400 * counter) + "px";
+prevButton.addEventListener("click", function () {
+  if (counter <= 0) {
+    return;
+  }
+  slider.style.transition = "all 0.4s ease-in-out";
+  counter--;
+  slider.style.transform = "translateX(" + -400 * counter + "px";
 });
 
 // slider.addEventListener("transitionend", function(){
@@ -76,8 +81,4 @@ prevButton.addEventListener("click", function(){
 //     }
 // });
 
-
-
-export {
-    displayFilteredResult
-}
+export { displayFilteredResult };

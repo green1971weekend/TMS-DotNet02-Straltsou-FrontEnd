@@ -1,91 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <title>Learn App</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css"
+    integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <title>Learn App</title>
 </head>
 
 <body>
-
-<nav role="navigation">
+  <nav role="navigation">
     <div class="main-menu">
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
     </div>
     <ul class="nav-links">
-        <li><a href="#" class="home">Home</a></li>
-        <li><a href="#" class="dictionary-button">My Dictionary</a></li>
-        <li><a href="#" class="logout">Logout</a></li>
+      <li><a href="#" class="home">Home</a></li>
+      <li><a href="#" class="dictionary-button">My Dictionary</a></li>
+      <li><a href="#" class="logout">Logout</a></li>
     </ul>
-</nav>
+  </nav>
 
-<main class="container">
+  <main class="container">
     <div class="wrapper">
-        <h2 class="app-logo">Learn English</h2>
-        <div class="upside__part display-flex">
-            <div class="search-box">
-                <input type="text" class="search-box__input" placeholder="What word are you looking for?">
-                <div class="options"></div>
-            </div>
+      <h2 class="app-logo">Learn English</h2>
+      <div class="upside__part display-flex">
+        <div class="search-box">
+          <input type="text" class="search-box__input" placeholder="What word are you looking for?" />
+          <div class="options"></div>
         </div>
-        <div class="main">
-            <div class="main__content display-flex">
-                <div class="left-content">
-                    <div class="translate">
-                        <p>Translate your search word to Russian language</p>
-                    </div>
-                    <div class="picture">
-                        <i class="fas fa-chevron-right" id="nextBtn"></i>
-                        <i class="fas fa-chevron-left" id="prevBtn"></i>
-                        <div class="picture__slider"></div>
-                    </div>
-                    <div class="picture__introduction">
-                        <p>Try find some intresting illustrations to your searching.</p>
-                    </div>
-                </div>
-                <div class="right-content">
-                    <div class="introduction__context">
-                        <p>Choose any synonym which somehow bound with your word.</p>
-                    </div>
-                    <div class="wrap__context display-none">
-                        <div class="grid__synonyms grid__synonyms-show" >
-                            <button class="synonym__button"></button>
-                            <button class="synonym__button"></button>
-                            <button class="synonym__button"></button>
-                            <button class="synonym__button"></button>
-                            <button class="synonym__button"></button>
-                            <button class="synonym__button"></button>
-                            <button class="synonym__button"></button>
-                            <button class="synonym__button"></button>
-                        </div>
-                    </div>
-                    <div class="wrap__card display-none">
-                        <div class="card">
-                            <div class="card__word"></div>
-                            <div class="card__description"></div>
-                            <div class="card__footer">
-                                <button class="back-to-synonyms-btn">Back to the synonyms</button>
-                                <button class="remember-context-btn">Remember me</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      </div>
+      <div class="main">
+        <div class="main__content display-flex">
+          <div class="left-content">
+            <div class="translate">
+              <p>Translate your search word to Russian language</p>
             </div>
-            <div class="vocabulary">
-                <h2 class="dictionary-logo display-none">My Dictionary</h2>
+            <div class="picture">
+              <i class="fas fa-chevron-right" id="nextBtn"></i>
+              <i class="fas fa-chevron-left" id="prevBtn"></i>
+              <div class="picture__slider"></div>
             </div>
+            <div class="picture__introduction">
+              <p>Try find some intresting illustrations to your searching.</p>
+            </div>
+          </div>
+          <div class="right-content">
+            <div class="introduction__context">
+              <p>Choose any synonym which somehow bound with your word.</p>
+            </div>
+            <div class="wrap__context display-none">
+              <div class="grid__synonyms grid__synonyms-show">
+                <button class="synonym__button"></button>
+                <button class="synonym__button"></button>
+                <button class="synonym__button"></button>
+                <button class="synonym__button"></button>
+                <button class="synonym__button"></button>
+                <button class="synonym__button"></button>
+                <button class="synonym__button"></button>
+                <button class="synonym__button"></button>
+              </div>
+            </div>
+            <div class="wrap__card display-none">
+              <div class="card">
+                <div class="card__word"></div>
+                <div class="card__description"></div>
+                <div class="card__footer">
+                  <button class="back-to-synonyms-btn">
+                    Back to the synonyms
+                  </button>
+                  <button class="remember-context-btn">Remember me</button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+        <div class="vocabulary">
+          <h2 class="dictionary-logo display-none">My Dictionary</h2>
+        </div>
+      </div>
     </div>
+  </main>
 
-</main>
-
-<script type="module" src="./assets/javascript/script.js"></script>
-<script src="./assets/javascript/API_URLs.js"></script>
-
+  <script type="module" src="./assets/javascript/script.js"></script>
+  <script src="./assets/javascript/API_URLs.js"></script>
 </body>
 
 </html>
