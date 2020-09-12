@@ -1,6 +1,6 @@
 # LearnApp [FrontEnd]
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/b177d993-28ae-4172-bafd-c4da402ef7fc/deploy-status)](https://app.netlify.com/sites/learn-app/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/9c076e57-1577-4f34-b05e-1f97439b6f37/deploy-status)](https://app.netlify.com/sites/learn-app/deploys)
 
 Main idea of this application is to provide user interface for a back-end part of LearnApp which intended to support and provide for learner all necessarily knowledges of translate, definitions, pictures etc.
 
